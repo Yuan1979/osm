@@ -1,8 +1,8 @@
 FROM python:3.7
 
-#ENV FLASK_APP app.py
-#ENV FLASK_RUN_PORT 80
-#ENV FLASK_RUN_HOST 0.0.0.0
+ENV FLASK_APP app.py
+ENV FLASK_RUN_PORT 80
+ENV FLASK_RUN_HOST 0.0.0.0
 
 RUN apt-get update && apt-get -y install \
     wget \
@@ -18,5 +18,10 @@ ADD . /code/
 
 EXPOSE 80
 
-ENTRYPOINT [ "./update_osm.sh" ]
+# We set our own entrypoint, allowing us to verify database availability before
+# the application is started.
+ENTRYPOINT ["./docker-entrypoint.sh"]
+
+# start the API service
+CMD [ "api" ]
 

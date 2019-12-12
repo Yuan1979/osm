@@ -1,6 +1,6 @@
-Flask==1.0.2
-flask-cors==3.0.6
-Flask-RESTful==0.3.6
-Flask-SQLAlchemy==2.3.1
-requests==2.19.1
+Flask
+flask-cors
+Flask-RESTful
+Flask-SQLAlchemy
+requests
 psycopg2

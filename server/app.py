@@ -1,21 +1,16 @@
 import os
 from flask import Flask
-#from flask_migrate import flask_migrate
-from flask_cors import flask_cors
+from domain import db
+from api import create_api
+from config import Config
+from flask_cors import CORS 
 
-#def create_app():
-#    flask_app = Flask(__name__)
-#    return flask_app
+def create_app():
+    flask_app = Flask(__name__)
+    flask_app.config.from_object(Config)
+    db.init_app(flask_app)
+    create_api(flask_app)
+    return flask_app
 
-#app = create_app()
-#CORS(app)
-
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Hello, World!"
-    
-if __name__ == "__main__":
-    app.run(debug=True)
-
+app = create_app()
+CORS(app)
