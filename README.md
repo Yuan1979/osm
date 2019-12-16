@@ -26,6 +26,6 @@ Then the number of nodes can be accessed by localhost/api/0.1/nodes.
 ## Django implementation
 ```
 cd DjangoOsm
-http://localhost:8000/nodes/
+python3 manage.py runserver localhost:8000
 ```
 The all the nodes in the planet_osm_point table can be accessed by http://localhost:8000/nodes/.
