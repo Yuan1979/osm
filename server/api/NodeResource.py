@@ -8,10 +8,5 @@ class NodeResource(BaseResource):
         self._node_service = self._database_service_factory.get('Nodes')
 
     def get(self):
-        node = self._node_service.get()
-        return node
-        #return{
-        #"    'node': [{
-        #"        'name': 'node1'
-        #"    }]
-        #"} 
+        nodes = self._node_service.get()
+        return len(nodes)
